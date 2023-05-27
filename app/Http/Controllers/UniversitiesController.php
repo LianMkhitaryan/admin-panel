@@ -4,20 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UniversityRequest;
 use App\Models\University;
-use Illuminate\Http\Request;
 
 class UniversitiesController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $universities = University::all();
@@ -41,8 +30,8 @@ class UniversitiesController extends Controller
         $university->faculties = $request->input('faculties');
         $university->specialities = $request->input('specialities');
         $university->save();
-    
-        return redirect()->route('universities.index');   
+
+        return redirect()->route('universities.index');
     }
 
     public function edit($id)
@@ -63,15 +52,15 @@ class UniversitiesController extends Controller
         $university->faculties = $request->input('faculties');
         $university->specialities = $request->input('specialities');
         $university->save();
-    
-        return redirect()->route('universities.index'); 
+
+        return redirect()->route('universities.index');
     }
 
     public function destroy($id)
     {
         $university = University::findOrFail($id);
         $university->delete();
-    
-        return redirect()->route('universities.index'); 
+
+        return redirect()->route('universities.index');
     }
 }

@@ -4,20 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\EmployerRequest;
 use App\Models\Employer;
-use Illuminate\Http\Request;
 
 class EmployersController extends Controller
 {
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $employers = Employer::all();
@@ -38,8 +27,8 @@ class EmployersController extends Controller
         $employer->phone = $request->input('phone');
         $employer->email = $request->input('email');
         $employer->save();
-    
-        return redirect()->route('employers.index');   
+
+        return redirect()->route('employers.index');
     }
 
     public function edit($id)
@@ -57,15 +46,15 @@ class EmployersController extends Controller
         $employer->phone = $request->input('phone');
         $employer->email = $request->input('email');
         $employer->save();
-    
-        return redirect()->route('employers.index'); 
+
+        return redirect()->route('employers.index');
     }
 
     public function destroy($id)
     {
         $employer = Employer::findOrFail($id);
         $employer->delete();
-    
-        return redirect()->route('employers.index'); 
+
+        return redirect()->route('employers.index');
     }
 }

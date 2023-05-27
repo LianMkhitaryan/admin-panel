@@ -6,20 +6,9 @@ use App\Http\Requests\ResponseRequest;
 use App\Models\Response;
 use App\Models\Resume;
 use App\Models\Vacancy;
-use Illuminate\Http\Request;
 
 class ResponsesController extends Controller
 {
-                /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $responses = Response::with('resume', 'vacancy')->get();
@@ -40,8 +29,8 @@ class ResponsesController extends Controller
         $response->resume_id = $request->input('resume_id');
         $response->vacancy_id = $request->input('vacancy_id');
         $response->save();
-    
-        return redirect()->route('responses.index');   
+
+        return redirect()->route('responses.index');
     }
 
     public function edit($id)
@@ -59,15 +48,15 @@ class ResponsesController extends Controller
         $response->resume_id = $request->input('resume_id');
         $response->vacancy_id = $request->input('vacancy_id');
         $response->save();
-    
-        return redirect()->route('responses.index'); 
+
+        return redirect()->route('responses.index');
     }
 
     public function destroy($id)
     {
         $response = Response::findOrFail($id);
         $response->delete();
-    
-        return redirect()->route('responses.index'); 
+
+        return redirect()->route('responses.index');
     }
 }

@@ -4,20 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\GraduateRequest;
 use App\Models\Graduate;
-use Illuminate\Http\Request;
 
 class GraduatesController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $graduates = Graduate::all();
@@ -39,8 +28,8 @@ class GraduatesController extends Controller
         $graduate->phone = $request->input('phone');
         $graduate->email = $request->input('email');
         $graduate->save();
-    
-        return redirect()->route('graduates.index');   
+
+        return redirect()->route('graduates.index');
     }
 
     public function edit($id)
@@ -59,16 +48,15 @@ class GraduatesController extends Controller
         $graduate->phone = $request->input('phone');
         $graduate->email = $request->input('email');
         $graduate->save();
-    
-        return redirect()->route('graduates.index'); 
+
+        return redirect()->route('graduates.index');
     }
 
     public function destroy($id)
     {
         $graduate = Graduate::findOrFail($id);
         $graduate->delete();
-    
-        return redirect()->route('graduates.index'); 
+
+        return redirect()->route('graduates.index');
     }
 }
-

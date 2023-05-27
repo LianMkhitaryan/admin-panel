@@ -5,20 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ResumeRequest;
 use App\Models\Resume;
 use App\Models\Graduate;
-use Illuminate\Http\Request;
 
 class ResumesController extends Controller
 {
-        /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $resumes = Resume::with('graduate')->get();
@@ -40,8 +29,8 @@ class ResumesController extends Controller
         $resume->courses = $request->input('courses');
         $resume->graduate_id = $request->input('graduate_id');
         $resume->save();
-    
-        return redirect()->route('resumes.index');   
+
+        return redirect()->route('resumes.index');
     }
 
     public function edit($id)
@@ -60,15 +49,15 @@ class ResumesController extends Controller
         $resume->courses = $request->input('courses');
         $resume->graduate_id = $request->input('graduate_id');
         $resume->save();
-    
-        return redirect()->route('resumes.index'); 
+
+        return redirect()->route('resumes.index');
     }
 
     public function destroy($id)
     {
         $resume = Resume::findOrFail($id);
         $resume->delete();
-    
-        return redirect()->route('resumes.index'); 
+
+        return redirect()->route('resumes.index');
     }
 }

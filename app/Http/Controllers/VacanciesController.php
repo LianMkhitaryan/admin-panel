@@ -5,20 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VacancyRequest;
 use App\Models\Vacancy;
 use App\Models\Employer;
-use Illuminate\Http\Request;
 
 class VacanciesController extends Controller
 {
-            /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $vacancies = Vacancy::with('employer')->get();
@@ -41,8 +30,8 @@ class VacanciesController extends Controller
         $vacancy->contact_info = $request->input('contact_info');
         $vacancy->employer_id = $request->input('employer_id');
         $vacancy->save();
-    
-        return redirect()->route('vacancies.index');   
+
+        return redirect()->route('vacancies.index');
     }
 
     public function edit($id)
@@ -62,15 +51,15 @@ class VacanciesController extends Controller
         $vacancy->contact_info = $request->input('contact_info');
         $vacancy->employer_id = $request->input('employer_id');
         $vacancy->save();
-    
-        return redirect()->route('vacancies.index'); 
+
+        return redirect()->route('vacancies.index');
     }
 
     public function destroy($id)
     {
         $vacancy = Vacancy::findOrFail($id);
         $vacancy->delete();
-    
-        return redirect()->route('vacancies.index'); 
+
+        return redirect()->route('vacancies.index');
     }
 }
