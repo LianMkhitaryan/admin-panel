@@ -23,33 +23,53 @@
 
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror "
-                                        id="name" name="name" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        id="name" name="name" required value="{{ old('name') }}">
                                     @error('name')
                                         <span class="error invalid-feedback">
-                                            {{$message}}
+                                            {{ $message }}
                                         </span>
                                     @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control" id="description" name="description"></textarea>
+                                    <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description">{{ old('description') }}</textarea>
+                                    @error('description')
+                                        <span class="error invalid-feedback">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="address">Address</label>
-                                    <input type="text" class="form-control" id="address" name="address">
+                                    <input type="text" class="form-control @error('address') is-invalid @enderror" id="address" name="address" value="{{ old('address') }}">
+                                    @error('address')
+                                        <span class="error invalid-feedback">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="phone">Phone</label>
-                                    <input type="phone" class="form-control" id="phone" name="phone">
+                                    <input type="phone" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone" value="{{ old('phone') }}">
+                                    @error('phone')
+                                        <span class="error invalid-feedback">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email') }}">
+                                    @error('email')
+                                        <span class="error invalid-feedback">
+                                            {{ $message }}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <button type="submit" class="btn btn-primary">Create</button>
