@@ -23,7 +23,13 @@
 
                                 <div class="form-group">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror "
+                                        id="name" name="name" required>
+                                    @error('name')
+                                        <span class="error invalid-feedback">
+                                            {{$message}}
+                                        </span>
+                                    @enderror
                                 </div>
 
                                 <div class="form-group">
