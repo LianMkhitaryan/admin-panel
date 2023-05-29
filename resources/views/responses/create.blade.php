@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <!-- Form to create a new Response -->
                         <div class="card-body">
                             <form method="POST" action="{{ route('responses.store') }}">
                                 @csrf
@@ -34,7 +33,7 @@
                                 <div class="form-group">
                                     <label for="resume">Resume</label>
                                     <select class="form-control @error('resume_id') is-invalid @enderror" id="resume_id" name="resume_id" required>
-                                        <option value="Select Item" selected disabled>Select Item</option>
+                                        <option value="" selected disabled>Select Item</option>
                                         @foreach ($resumes as $id => $experience)
                                             <option value="{{$id}}">{{$experience}}</option>
                                         @endforeach
@@ -49,7 +48,7 @@
                                 <div class="form-group">
                                     <label for="vacancy">Vacancy</label>
                                     <select class="form-control @error('vacancy_id') is-invalid @enderror" id="vacancy_id" name="vacancy_id" required>
-                                        <option value="Select Item" selected disabled>Select Item</option>
+                                        <option value="" selected disabled>Select Item</option>
                                         @foreach ($vacancies as $id => $name)
                                             <option value="{{$id}}">{{$name}}</option>
                                         @endforeach

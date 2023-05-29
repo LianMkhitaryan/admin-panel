@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                    <!-- Form to edit an existing University -->
                     <div class="card-body">
                         <form method="POST" action="{{ route('universities.update', $university->id) }}">
                             @csrf
@@ -84,7 +83,11 @@
 
                             <div class="form-group">
                                 <label for="faculties">Faculties</label>
-                                <input type="text" class="form-control @error('faculties') is-invalid @enderror" id="faculties" name="faculties" value="{{ old('faculties') ?? $university->faculties }}">
+                                <select class="form-control @error('faculties') is-invalid @enderror" id="faculties" name="faculties[]" required multiple>
+                                    @foreach ($faculties as $id => $name)
+                                        <option value="{{$id}}" @if(in_array($id, $selectedFacultiesIds)) selected @endif>{{$name}}</option>
+                                    @endforeach
+                                </select>
                                 @error('faculties')
                                     <span class="error invalid-feedback">
                                         {{ $message }}
@@ -94,7 +97,11 @@
 
                             <div class="form-group">
                                 <label for="specialities">Specialities</label>
-                                <input type="text" class="form-control @error('specialities') is-invalid @enderror" id="specialities" name="specialities" value="{{ old('specialities') ?? $university->specialities }}">
+                                <select class="form-control @error('specialities') is-invalid @enderror" id="specialities" name="specialities[]" required multiple>
+                                    @foreach ($specialities as $id => $name)
+                                        <option value="{{$id}}" @if(in_array($id, $selectedSpecialitiesIds)) selected @endif>{{$name}}</option>
+                                    @endforeach
+                                </select>
                                 @error('specialities')
                                     <span class="error invalid-feedback">
                                         {{ $message }}

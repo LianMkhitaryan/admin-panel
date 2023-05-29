@@ -49,14 +49,6 @@
                                         aria-label="Website: activate to sort column ascending">
                                         Website</th>
                                     <th class="sorting" tabindex="0"
-                                        rowspan="1" colspan="1"
-                                        aria-label="Faculties: activate to sort column ascending">
-                                        Faculties</th>
-                                    <th class="sorting" tabindex="0"
-                                        rowspan="1" colspan="1"
-                                        aria-label="Specialities: activate to sort column ascending">
-                                        Specialities</th>
-                                        <th class="sorting" tabindex="0"
                                         rowspan="1" colspan="1">Actions</th>
                                 </tr>
                             </thead>
@@ -69,8 +61,6 @@
                                     <td>{{ $university->phone }}</td>
                                     <td>{{ $university->email }}</td>
                                     <td>{{ $university->website }}</td>
-                                    <td>{{ $university->faculties }}</td>
-                                    <td>{{ $university->specialities }}</td>
                                     <td>
                                         <a href="{{ route('universities.edit', $university->id) }}" class="btn btn-info btn-sm">Edit</a>
                                         <form action="{{ route('universities.destroy', $university->id) }}" method="POST" style="display: inline-block;">

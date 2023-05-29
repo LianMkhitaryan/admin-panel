@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <!-- Form to create a new University -->
                         <div class="card-body">
                             <form method="POST" action="{{ route('employers.store') }}">
                                 @csrf

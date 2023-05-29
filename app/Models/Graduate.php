@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Graduate extends Model
 {
-    protected $fillable = ['full_name', 'date', 'speciality', 'address', 'phone', 'email'];
+    protected $fillable = ['full_name', 'date', 'address', 'phone', 'email'];
 
     public function universities()
     {
@@ -16,5 +16,10 @@ class Graduate extends Model
     public function resume()
     {
         return $this->hasOne(Resume::class);
+    }
+
+    public function speciality()
+    {
+        return $this->belongsTo(Speciality::class);
     }
 }

@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <!-- Form to create a new University -->
                         <div class="card-body">
                             <form method="POST" action="{{ route('vacancies.store') }}">
                                 @csrf
@@ -74,7 +73,7 @@
                                 <div class="form-group">
                                     <label for="employer">Employer</label>
                                     <select class="form-control @error('employer_id') is-invalid @enderror" id="employer_id" name="employer_id" required>
-                                        <option value="Select Item" selected disabled>Select Item</option>
+                                        <option value="" selected disabled>Select Item</option>
                                         @foreach ($employers as $id => $name)
                                             <option value="{{$id}}">{{$name}}</option>
                                         @endforeach

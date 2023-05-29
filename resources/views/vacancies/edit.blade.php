@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                    <!-- Form to edit an existing Vacancy -->
                     <div class="card-body">
                         <form method="POST" action="{{ route('vacancies.update', $vacancy->id) }}">
                             @csrf

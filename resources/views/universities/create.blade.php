@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <!-- Form to create a new University -->
                         <div class="card-body">
                             <form method="POST" action="{{ route('universities.store') }}">
                                 @csrf
@@ -83,7 +82,11 @@
 
                                 <div class="form-group">
                                     <label for="faculties">Faculties</label>
-                                    <input type="text" class="form-control @error('faculties') is-invalid @enderror" id="faculties" name="faculties" value="{{ old('faculties') }}">
+                                    <select class="form-control @error('faculties') is-invalid @enderror" id="faculties" name="faculties[]" required multiple>
+                                        @foreach ($faculties as $id => $name)
+                                            <option value="{{$id}}">{{$name}}</option>
+                                        @endforeach
+                                    </select>
                                     @error('faculties')
                                         <span class="error invalid-feedback">
                                             {{ $message }}
@@ -93,7 +96,11 @@
 
                                 <div class="form-group">
                                     <label for="specialities">Specialities</label>
-                                    <input type="text" class="form-control @error('specialities') is-invalid @enderror" id="specialities" name="specialities" value="{{ old('specialities') }}">
+                                    <select class="form-control @error('specialities') is-invalid @enderror" id="specialities" name="specialities[]" required multiple>
+                                        @foreach ($specialities as $id => $name)
+                                            <option value="{{$id}}">{{$name}}</option>
+                                        @endforeach
+                                    </select>
                                     @error('specialities')
                                         <span class="error invalid-feedback">
                                             {{ $message }}

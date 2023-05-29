@@ -57,7 +57,7 @@
                                 <tr>
                                     <td>{{ $graduate->full_name }}</td>
                                     <td>{{ $graduate->date }}</td>
-                                    <td>{{ $graduate->speciality }}</td>
+                                    <td>{{ $graduate->speciality->name }}</td>
                                     <td>{{ $graduate->address }}</td>
                                     <td>{{ $graduate->phone }}</td>
                                     <td>{{ $graduate->email }}</td>

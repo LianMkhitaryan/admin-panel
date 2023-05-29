@@ -7,6 +7,8 @@ use App\Http\Controllers\ResumesController;
 use App\Http\Controllers\EmployersController;
 use App\Http\Controllers\VacanciesController;
 use App\Http\Controllers\ResponsesController;
+use App\Http\Controllers\FacultiesController;
+use App\Http\Controllers\SpecialitiesController;
 
 Route::get('/', function () {
     return redirect(route('universities.index'));
@@ -85,6 +87,30 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/responses/{id}/edit', [ResponsesController::class, 'edit'])->name('responses.edit');
     Route::put('/responses/{id}', [ResponsesController::class, 'update'])->name('responses.update');
     Route::delete('/responses/{id}', [ResponsesController::class, 'destroy'])->name('responses.destroy');
+
+    /*
+    |--------------------------------------------------------------------------
+    |Faculties
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/faculties', [FacultiesController::class, 'index'])->name('faculties.index');
+    Route::get('/faculties/create', [FacultiesController::class, 'create'])->name('faculties.create');
+    Route::post('/faculties', [FacultiesController::class, 'store'])->name('faculties.store');
+    Route::get('/faculties/{id}/edit', [FacultiesController::class, 'edit'])->name('faculties.edit');
+    Route::put('/faculties/{id}', [FacultiesController::class, 'update'])->name('faculties.update');
+    Route::delete('/faculties/{id}', [FacultiesController::class, 'destroy'])->name('faculties.destroy');
+
+    /*
+    |--------------------------------------------------------------------------
+    |Specialities
+    |--------------------------------------------------------------------------
+    */
+    Route::get('/specialities', [SpecialitiesController::class, 'index'])->name('specialities.index');
+    Route::get('/specialities/create', [SpecialitiesController::class, 'create'])->name('specialities.create');
+    Route::post('/specialities', [SpecialitiesController::class, 'store'])->name('specialities.store');
+    Route::get('/specialities/{id}/edit', [SpecialitiesController::class, 'edit'])->name('specialities.edit');
+    Route::put('/specialities/{id}', [SpecialitiesController::class, 'update'])->name('specialities.update');
+    Route::delete('/specialities/{id}', [SpecialitiesController::class, 'destroy'])->name('specialities.destroy');
 
 });
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UniversityRequest;
+use App\Models\Faculty;
+use App\Models\Speciality;
 use App\Models\University;
 
 class UniversitiesController extends Controller
@@ -15,7 +17,13 @@ class UniversitiesController extends Controller
 
     public function create()
     {
-        return view('universities.create');
+        $faculties = Faculty::pluck('name', 'id');
+        $specialities = Speciality::pluck('name', 'id');
+
+        return view('universities.create', compact(
+            'faculties',
+            'specialities'
+        ));
     }
 
     public function store(UniversityRequest $request)
@@ -27,9 +35,10 @@ class UniversitiesController extends Controller
         $university->phone = $request->input('phone');
         $university->email = $request->input('email');
         $university->website = $request->input('website');
-        $university->faculties = $request->input('faculties');
-        $university->specialities = $request->input('specialities');
         $university->save();
+
+        $university->faculties()->sync($request->input('faculties'));
+        $university->specialities()->sync($request->input('specialities'));
 
         return redirect()->route('universities.index');
     }
@@ -37,7 +46,18 @@ class UniversitiesController extends Controller
     public function edit($id)
     {
         $university = University::findOrFail($id);
-        return view('universities.edit', compact('university'));
+        $faculties = Faculty::pluck('name', 'id');
+        $specialities = Speciality::pluck('name', 'id');
+        $selectedFacultiesIds = $university->faculties()->pluck('faculty_id')->toArray();
+        $selectedSpecialitiesIds = $university->specialities()->pluck('speciality_id')->toArray();
+
+        return view('universities.edit', compact(
+            'university',
+            'faculties',
+            'specialities',
+            'selectedFacultiesIds',
+            'selectedSpecialitiesIds'
+        ));
     }
 
     public function update(UniversityRequest $request, $id)
@@ -49,9 +69,10 @@ class UniversitiesController extends Controller
         $university->phone = $request->input('phone');
         $university->email = $request->input('email');
         $university->website = $request->input('website');
-        $university->faculties = $request->input('faculties');
-        $university->specialities = $request->input('specialities');
         $university->save();
+
+        $university->faculties()->sync($request->input('faculties'));
+        $university->specialities()->sync($request->input('specialities'));
 
         return redirect()->route('universities.index');
     }

@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                    <!-- Form to edit an existing Response -->
                     <div class="card-body">
                         <form method="POST" action="{{ route('responses.update', $response->id) }}">
                             @csrf
@@ -35,7 +34,7 @@
                             <div class="form-group">
                                 <label for="resume_id">Resume</label>
                                 <select class="form-control @error('resume_id') is-invalid @enderror" id="resume_id" name="resume_id" required>
-                                    <option value="Select Item" selected disabled>Select Item</option>
+                                    <option value="" selected disabled>Select Item</option>
                                     @foreach ($resumes as $id => $experience)
                                         <option value="{{ $id }}" @if($id === $response->resume_id) selected @endif>{{ $experience }}</option>
                                     @endforeach
@@ -50,7 +49,7 @@
                             <div class="form-group">
                                 <label for="vacancy_id">Vacancy</label>
                                 <select class="form-control @error('vacancy_id') is-invalid @enderror" id="vacancy_id" name="vacancy_id" required>
-                                    <option value="Select Item" selected disabled>Select Item</option>
+                                    <option value="" selected disabled>Select Item</option>
                                     @foreach ($vacancies as $id => $name)
                                         <option value="{{ $id }}" @if($id === $response->vacancy_id) selected @endif>{{ $name }}</option>
                                     @endforeach

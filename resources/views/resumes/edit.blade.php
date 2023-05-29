@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                    <!-- Form to edit an existing Resume -->
                     <div class="card-body">
                         <form method="POST" action="{{ route('resumes.update', $resume->id) }}">
                             @csrf

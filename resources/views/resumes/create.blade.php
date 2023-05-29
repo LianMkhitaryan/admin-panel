@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                        <!-- Form to create a new Resume -->
                         <div class="card-body">
                             <form method="POST" action="{{ route('resumes.store') }}">
                                 @csrf
@@ -64,7 +63,7 @@
                                 <div class="form-group">
                                     <label for="Graduate">Graduate</label>
                                     <select class="form-control @error('graduate_id') is-invalid @enderror" id="graduate_id" name="graduate_id" required>
-                                        <option value="Select Item" selected disabled>Select Item</option>
+                                        <option value="" selected disabled>Select Item</option>
                                         @foreach ($graduates as $id => $full_name)
                                             <option value="{{$id}}">{{$full_name}}</option>
                                         @endforeach

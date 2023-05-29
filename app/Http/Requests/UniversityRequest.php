@@ -20,8 +20,8 @@ class UniversityRequest extends FormRequest
             'phone' => 'string',
             'email' => 'required|email',
             'website' => 'string',
-            'faculties' => 'string',
-            'specialities' => 'string',
+            'faculties' => 'required|array',
+            'specialities' => 'required|array',
         ];
     }
 }

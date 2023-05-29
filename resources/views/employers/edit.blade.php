@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                           <!-- Form to edit an existing Employer -->
                            <div class="card-body">
                             <form method="POST" action="{{ route('employers.update', $employer->id) }}">
                                 @csrf

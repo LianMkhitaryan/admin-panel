@@ -16,7 +16,6 @@
                 <div class="col-12">
                     <div class="card">
 
-                    <!-- Form to edit an existing Graduate -->
                     <div class="card-body">
                         <form method="POST" action="{{ route('graduates.update', $graduate->id) }}">
                             @csrf
@@ -43,9 +42,13 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="speciality">Speciality</label>
-                                <input type="text" class="form-control @error('speciality') is-invalid @enderror" id="speciality" name="speciality" value="{{ old('speciality') ?? $graduate->speciality }}">
-                                @error('speciality')
+                                <label for="speciality_id">Speciality</label>
+                                <select class="form-control @error('speciality_id') is-invalid @enderror" id="speciality_id" name="speciality_id" required>
+                                    @foreach ($specialities as $id => $name)
+                                        <option value="{{$id}}" @if($id === $graduate->speciality->id) selected @endif>{{$name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('speciality_id')
                                     <span class="error invalid-feedback">
                                         {{ $message }}
                                     </span>
